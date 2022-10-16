@@ -1,0 +1,232 @@
+*{
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: hidden;
+  }
+
+  .input-group {
+
+    padding: 60px 0px 0px 60px ;
+  }
+
+  .list-group {
+    margin: 60px;
+  }
+
+  .form-group {
+    margin-left: 60px;
+  }
+
+  /* Float four columns side by side */
+    /* .column {
+    float: left;
+    width: 40%;
+    padding: 0 70px 50px ;
+  }   */
+  
+  /* Remove extra left and right margins, due to padding */
+   /* .row {margin: 10px 100px 10px 300px;}   */
+  
+   .main{
+    height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 120px;
+   }
+  /* Clear floats after the columns */
+  /* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  } */
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin: 60px;
+  }
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 60px;
+  }
+  .wrapper {
+    /* height: 300px; */
+    width: 100px;
+    /*This part is important for centering*/
+    display: flex;
+    display: table-cell;
+    padding-left: 65px;
+  }
+  
+  .typing-demo {
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 20px;
+    padding: 120px 0px 10px 10px;
+  }
+  .css-typing p {
+    border-right: .15em solid orange;
+    font-family: "Courier";
+    font-size: 16px;
+    white-space: nowrap;
+    padding-left: 85px;
+    overflow: hidden;
+  }
+  .css-typing p:nth-child(1) {
+    width: 14.5em;
+    -webkit-animation: type 2s steps(40, end);
+    animation: type 2s steps(40, end);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    
+  }
+  
+  .css-typing p:nth-child(2) {
+    width: 15.5em;
+    opacity: 0;
+    -webkit-animation: type2 2s steps(40, end);
+    animation: type2 2s steps(40, end);
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  
+  .css-typing p:nth-child(3) {
+    width: 7.3em;
+    opacity: 0;
+    -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+    animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes type {
+    0% {
+      width: 0px;
+    }
+    99.9% {
+      border-right: .15em solid orange;
+    }
+    100% {
+      border: none;
+    }
+  }
+  
+  @-webkit-keyframes type {
+    0% {
+      width: 0;
+    }
+    99.9% {
+      border-right: .15em solid orange;
+    }
+    100% {
+      border: none;
+    }
+  }
+  
+  @keyframes type2 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    99.9% {
+      border-right: .15em solid orange;
+    }
+    100% {
+      opacity: 1;
+      border: none;
+    }
+  }
+  
+  @-webkit-keyframes type2 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    99.9% {
+      border-right: .15em solid orange;
+    }
+    100% {
+      opacity: 1;
+      border: none;
+    }
+  }
+  
+  @keyframes type3 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes type3 {
+    0% {
+      width: 0;
+    }
+    1% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+  @-webkit-keyframes blink {
+    50% {
+      border-color: tranparent;
+    }
+  }
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    10% {
+      border-color: transparent
+    }
+  }

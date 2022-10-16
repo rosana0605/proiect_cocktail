@@ -1,4 +1,3 @@
-//var drinks = [];
 function load_cocktails()
 {
 	$.ajax({
@@ -22,7 +21,6 @@ function get_cocktails()
         },
         success: function( data )
         {
-            
                 console.log(data);
                  var content = $('#cocktail-list');
                  content.empty();
@@ -40,8 +38,6 @@ function get_cocktails()
                   }
                   if ((!($('#alcoholic').is(":checked")) && !($('#nonalcoholic').is(":checked"))) ) {
                     lgi += '<li id="'+id+'" class="list-group-item" onclick="display_details('+id+')"><span class="badge bg-primary">'+i+'</span> ' + name + '</li>';
-                  
-                    
                   } 
                  }
                  lgi+='</ol>';
@@ -54,11 +50,8 @@ function get_cocktails()
                     $('#cocktail-details').empty();
                     dns_text = '<div class="text"><p> Nu s-au găsit cocktailuri. Vă rugăm să încercați altă denumire.</p></div>';
                     content.append(dns_text);
-                  }
-               
-
+                }
         }
-
 	});
 }
 
@@ -72,42 +65,27 @@ function display_details(id){
     },
     success: function( data )
     {
-        
-            console.log(data);
-            
               var content = $('#cocktail-details');
               content.empty();
               drink = data.drinks[0];
-            var ingredients = drink["strIngredient"+1]+' ( '+drink["strMeasure"+1]+' ), ';
-            for( i=2;  i <= 15; i++ ){
-              if(drink["strIngredient"+i] != null ){
-                ingredients += drink["strIngredient"+i]+' ( '+drink["strMeasure"+i]+' ), ';
-              }
+              var ingredients = drink["strIngredient"+1]+' ( '+drink["strMeasure"+1]+' ), ';
+              for( i=2;  i <= 15; i++ ){
+                if(drink["strIngredient"+i] != null ){
+                  ingredients += drink["strIngredient"+i]+' ( '+drink["strMeasure"+i]+' ), ';
+                }
             }
-                    dns_text = '<div class="details"><div class="card"><figure><img src='+drink.strDrinkThumb+' width="136" height="200"></figure><h4>'+drink.strInstructions+'</h4><p>'+ingredients+'</p></div></div>';
+           dns_text = '<div class="details"><div class="card"><figure><img src='+drink.strDrinkThumb+' width="136" height="200"></figure><h4>'+drink.strInstructions+'</h4><p>'+ingredients+'</p></div></div>';
            content.append(dns_text);
             
 
     }
 
-});
+  });
 }
 
 $(document).ready(function(){
     load_cocktails();
     $('#search-btn').click(function() {
         get_cocktails();
-      });
-      // $('#sort-up-btn').click(function() {
-      //   get_products(true, false);
-      // });
-      // $('#sort-down-btn').click(function() {
-      //   get_products(false, true);
-      // });
-      // $('#max-price-btn').click(function() {
-      //   get_products();
-      // });
-      // $('#select-cat').change(function() {
-      //   get_products(false,false,this.value);
-      // });
+    });
 });

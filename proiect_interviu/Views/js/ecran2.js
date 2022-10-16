@@ -9,16 +9,12 @@ function get_ingredients()
         },
         success: function( data )
         {
-            
-                console.log(data);
                  var content1 = $('#ingredient-list');
                  content1.empty();
                  var content2 = $('#non-ingredient-list');
                  content2.empty();
                  drinks = data.drinks;
-                 for( i=0;  i < drinks.length; ++i )
-                 {
-                  console.log(drinks[i]);
+                 for( i=0;  i < drinks.length; ++i ){
                   let ingredient = drinks[i].strIngredient1;
                   let id_check = i+100;
                   let lgi1 = '<div class="form-check"><input type="checkbox" class="form-check-input" onclick="disable_check('+i+','+id_check+')" id="'+i+'" value="'+ingredient+'"><label class="form-check-label" for="'+i+'"> ' + ingredient + '</label></div>';
@@ -26,9 +22,6 @@ function get_ingredients()
                   content1.append(lgi1);
                   content2.append(lgi2);
                  }
-                 
-                
-               
 
         }
 
@@ -43,7 +36,6 @@ function disable_check(id,id_dis){
     }
 }
 
-
 function get_cocktails()
 {
     var arr_incluse=[];
@@ -56,7 +48,6 @@ function get_cocktails()
         arr_excluse.push($(this).val() );
     
     });
-    //console.log(arr);
     $('#list-group').empty();
     all_drinks=[];
     for(i=0;i<arr_incluse.length;i++){
@@ -72,27 +63,16 @@ function load_cocktails(ingredient, arr_incluse, arr_excluse){
         data : {i : ingredient
        },
         success: function( data )
-       {
-        
-             console.log(data);
-              
-                 drinks = data.drinks;
-                 
-               
-              for( i=0;  i < drinks.length; i++ )
-              {
-                
+        { 
+              drinks = data.drinks;
+              for( i=0;  i < drinks.length; i++ ){
                 let name = drinks[i].strDrink;
                 var drink = drinks[i].idDrink;
                 check_cocktail(name,drink,arr_incluse,arr_excluse);
-              
-                
-            
-           
-            }
-     }
+              }
+        }
 
- });
+    });
 }
 
 function check_cocktail(name, drink,arr_incluse,arr_excluse){
@@ -107,22 +87,18 @@ function check_cocktail(name, drink,arr_incluse,arr_excluse){
             var cocktail = data.drinks[0];
             var ingredients = [];
             for( i=1;  i <= 15; i++ ){
-                
                 if(cocktail["strIngredient"+i] != null ){
                     ingredients.push(cocktail["strIngredient"+i]); 
                 }
             }
             var containsAll = arr_incluse.every(i => ingredients.includes(i));
-            
             let isFounded = ingredients.some( ai => arr_excluse.includes(ai) );
             if(containsAll && !isFounded && !all_drinks.includes(name)){
                 lgi = '<li  class="list-group-item" >' + name + '</li>';
                 $('#list-group').append(lgi);
                 all_drinks.push(name);
-                 console.log(name)     ;
             }
         }
-
     });
 }
 
@@ -130,6 +106,5 @@ $(document).ready(function(){
     get_ingredients();
     $('#ingredient-btn').click(function() {
         get_cocktails();
-      });
-     
+    });
 });
